@@ -1,0 +1,57 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/dotnet
+{
+	"name": "C# (.NET)",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/dotnet:1-8.0-bookworm",
+	"features": {
+		"ghcr.io/nikiforovall/devcontainer-features/dotnet-csharpier:latest": {},
+		"ghcr.io/stuartleeks/dev-container-features/shell-history:latest": {},
+		"ghcr.io/devcontainers-extra/features/fd:latest": {},
+		"ghcr.io/devcontainers-extra/features/fzf:latest": {},
+		"ghcr.io/devcontainers-extra/features/ripgrep:latest": {}
+	},
+
+	"customizations": {
+		"vscode": {
+			"settings": {
+				//"extensions.ignoreRecommendations": true,
+				"cmake.configureOnOpen": false,
+				"cmake.showOptionsMovedNotification": false,
+				"git.autofetch": false
+			},
+			"extensions": [
+				"ms-dotnettools.csharp",
+				"dbaeumer.vscode-eslin",
+				"actboy168.tasks",
+				"augustocdias.tasks-shell-input",
+				"stkb.rewrap",
+				"wayou.vscode-todo-highlight",
+				"ms-python.python",
+				"formulahendry.code-runner",
+				"ms-dotnettools.csdevkit",
+				"alexkrechik.cucumberautocomplete",
+				"CucumberOpen.cucumber-official",
+				"ms-dotnettools.vscode-dotnet-runtime"
+			]
+		}
+	},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [5000, 5001],
+	// "portsAttributes": {
+	//		"5001": {
+	//			"protocol": "https"
+	//		}
+	// }
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	//"postCreateCommand": "sudo dotnet restore xunit-bdd.sln && sudo dotnet add package xunit && sudo dotnet add package xunit.runner.console && sudo dotnet add package reqnroll.xunit && sudo dotnet add package selenium.webdriver && sudo dotnet add package selenium.webdriver.chromedriver && sudo dotnet add package selenium.support && sudo dotnet add package seleniumextras.waithelpers && sudo dotnet add package dotnet add package system.configuration.configurationmanager && sudo dotnet add package NPOI",
+	"postCreateCommand": "sudo dotnet restore xunit-bdd.sln && sudo dotnet add package xunit && sudo dotnet add package xunit.runner.console && sudo dotnet add package reqnroll.xunit && sudo dotnet add package selenium.webdriver && sudo dotnet add package selenium.webdriver.chromedriver && sudo dotnet add package selenium.support && sudo dotnet add package seleniumextras.waithelpers && sudo dotnet add package NPOI sudo dotnet add package Microsoft.Extensions.Configuration && sudo dotnet add package Microsoft.Extensions.Configuration.Json && sudo dotnet add package Microsoft.Extensions.Configuration.Binder",
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+	"runArgs": [
+		"--user", "vscode"
+	]
+}
